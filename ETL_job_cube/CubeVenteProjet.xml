@@ -1,0 +1,118 @@
+<Schema name="New Schema1">
+  <Dimension type="StandardDimension" visible="true" name="Client">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="client" schema="dbo" alias="">
+      </Table>
+      <Level name="Nom" visible="true" table="client" column="nom" nameColumn="nom" uniqueMembers="false">
+      </Level>
+      <Level name="Prenom" visible="true" table="client" column="prenom" nameColumn="prenom" uniqueMembers="false">
+      </Level>
+      <Level name="Email" visible="true" table="client" column="email" nameColumn="email" uniqueMembers="false">
+      </Level>
+      <Level name="Sexe" visible="true" table="client" column="sexe" nameColumn="sexe" uniqueMembers="false">
+      </Level>
+      <Level name="Phone" visible="true" table="client" column="phone" nameColumn="phone" uniqueMembers="false">
+      </Level>
+      <Level name="Statut" visible="true" table="client" column="status" nameColumn="status" uniqueMembers="false">
+      </Level>
+      <Level name="client id" visible="true" table="client" column="client_id" nameColumn="client_id" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Produit">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="Produit" schema="dbo" alias="">
+      </Table>
+      <Level name="Nom Produit" visible="true" table="Produit" column="nom" nameColumn="nom" uniqueMembers="false">
+      </Level>
+      <Level name="Couleur" visible="true" table="Produit" column="couleur" nameColumn="couleur" uniqueMembers="false">
+      </Level>
+      <Level name="Prix unitaire" visible="true" table="Produit" column="prix_unitaire" nameColumn="prix_unitaire" uniqueMembers="false">
+      </Level>
+      <Level name="Id Produit" visible="true" table="Produit" column="produit_id" nameColumn="produit_id" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Temps">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="Temps" schema="dbo" alias="">
+      </Table>
+      <Level name="Date id" visible="true" table="Temps" column="date_id" nameColumn="date_id" uniqueMembers="false">
+      </Level>
+      <Level name="Annee" visible="true" table="Temps" column="annee" nameColumn="annee" uniqueMembers="false">
+      </Level>
+      <Level name="Mois" visible="true" table="Temps" column="mois" nameColumn="mois" uniqueMembers="false">
+      </Level>
+      <Level name="Jour" visible="true" table="Temps" column="jour" nameColumn="jour" uniqueMembers="false">
+      </Level>
+      <Level name="Semestre" visible="true" table="Temps" column="semestre" nameColumn="semestre" uniqueMembers="false">
+      </Level>
+      <Level name="Date Complet" visible="true" table="Temps" column="date_complet" nameColumn="date_complet" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Promotions">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="Promotion" schema="dbo" alias="">
+      </Table>
+      <Level name="Promotion id" visible="true" table="Promotion" column="promotion_id" nameColumn="promotion_id" uniqueMembers="false">
+      </Level>
+      <Level name="Nom Promotion" visible="true" table="Promotion" column="nom_promotion" nameColumn="nom_promotion" uniqueMembers="false">
+      </Level>
+      <Level name="Debut" visible="true" table="Promotion" column="debut" nameColumn="debut" uniqueMembers="false">
+      </Level>
+      <Level name="Fin" visible="true" table="Promotion" column="fin" nameColumn="fin" uniqueMembers="false">
+      </Level>
+      <Level name="Reduction" visible="true" table="Promotion" column="reduction" nameColumn="reduction" uniqueMembers="false">
+      </Level>
+      <Level name="Type Promotion" visible="true" table="Promotion" column="type_promo" nameColumn="type_promo" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Geographie">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="geographie" schema="dbo" alias="">
+      </Table>
+      <Level name="Geograthie id" visible="true" table="geographie" column="geographie_id" uniqueMembers="false">
+      </Level>
+      <Level name="Code Postal" visible="true" table="geographie" column="code_postal" nameColumn="code_postal" uniqueMembers="false">
+      </Level>
+      <Level name="Pays" visible="true" table="geographie" column="pays" nameColumn="pays" uniqueMembers="false">
+      </Level>
+      <Level name="Ville" visible="true" table="geographie" column="ville" nameColumn="ville" uniqueMembers="false">
+      </Level>
+      <Level name="Province" visible="true" table="geographie" column="province" nameColumn="province" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Monnaie">
+    <Hierarchy name="default" visible="true" hasAll="true">
+      <Table name="Monnaie" schema="dbo" alias="">
+      </Table>
+      <Level name="Monnaie Id" visible="true" table="Monnaie" column="monnaie_id" nameColumn="monnaie_id" uniqueMembers="false">
+      </Level>
+      <Level name="Monnaie Nom" visible="true" table="Monnaie" column="nom_monnaie" nameColumn="nom_monnaie" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Cube de Vente" visible="true" cache="true" enabled="true">
+    <Table name="Ventes" schema="dbo" alias="">
+    </Table>
+    <DimensionUsage source="Client" name="Client" visible="true" foreignKey="client_id">
+    </DimensionUsage>
+    <DimensionUsage source="Produit" name="Produit" visible="true" foreignKey="produit_id">
+    </DimensionUsage>
+    <DimensionUsage source="Geographie" name="Geographie" visible="true" foreignKey="geographie_id">
+    </DimensionUsage>
+    <DimensionUsage source="Promotions" name="Promotions" visible="true" foreignKey="promotion_id">
+    </DimensionUsage>
+    <DimensionUsage source="Temps" name="Temps" visible="true" foreignKey="date_livraison_id">
+    </DimensionUsage>
+    <DimensionUsage source="Monnaie" name="Monnaie" visible="true" foreignKey="monnaie_id">
+    </DimensionUsage>
+    <Measure name="Vente Total" column="total_vente" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Commande" column="commande_qty" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
